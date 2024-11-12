@@ -1,0 +1,52 @@
+Objectif : 
+
+afficher la valeur de data-reference dans .reference-img
+    --> Récupérer la valeur dans une variable (ex: refImg)
+    --> Récupérer (ou créer ) l'élément dans lequel on veut l'afficher dans une variable
+        (ex: spanRef)
+    --> Attribuer à spanRef via innertText ou innerHTML la valeur de refImg
+
+
+afficher la valeur de data-categorie dans .categorie-img
+
+(function($){
+  
+  const refImg = $('#lightbox').data('reference');
+  console.log(refImg)
+  $('.reference-img').html(refImg);
+
+  const catImg = $('#lightbox').data('categorie');
+  console.log(catImg)
+  $('.categorie-img').html(catImg);
+  
+
+  $(document).on('click', '.fullscreen-icon', function() {
+      $('#lightbox').css("display", "flex");
+  });
+  $('#prev-img').on('mouseenter',function(){
+    $('#prev-img').attr('src','images/prev-hover.svg');
+    console.log('précédente');
+  });
+
+  $('#prev-img').on('mouseleave',function(){
+    $('#prev-img').attr('src','images/prev-img.svg');
+    console.log('OUT !');
+  });
+
+  $('#next-img').on('mouseenter',function(){
+    $('#next-img').attr('src','images/next-hover.svg');
+    console.log('suivante');
+  });
+  $('#next-img').on('mouseleave',function(){
+    $('#next-img').attr('src','images/next-img.svg');
+    console.log('OUT !');
+  });
+
+
+  $('.close-button').on('click', function() {
+    console.log('Clicked !!!');
+      $('#lightbox').hide();
+  })
+
+
+})(jQuery)
